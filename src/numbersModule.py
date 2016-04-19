@@ -4,7 +4,6 @@ Created on Apr 18, 2016
 @author: pbuitrag
 '''
 import itertools
-from twisted.persisted.sob import guessType
 
 class NumberAnalyzer:
     
@@ -22,8 +21,6 @@ class NumberAnalyzer:
         
         option = list(optionT)
         print option
-        #if option[0] == 0 and option[1] == 1 and option[2] == 3:
-        #    print "Here we go"
         
         for digitOption, digitGuess in itertools.izip (option, guess):    
             print "Comparing..."
@@ -45,21 +42,7 @@ class NumberAnalyzer:
         guess = self.guessToIntList(guessP)
         nIter = 0
         print type(self.options)
-        #self.options[:] = [option for option in self.options if self.matchesGuess(option, guess, fixes, pics)]
-        newOptions = []
-        
-        '''for option in self.options:
-            if self.matchesGuess(option, guess, fixes, pics):
-                newOptions.append(option)
-        
-        '''
-        
-        for option in self.options:
-            if not self.matchesGuess(option, guess, fixes, pics):
-                self.options.remove(option)
-            nIter += 1
-        
-        #self.options = newOptions
+        self.options[:] = [option for option in self.options if self.matchesGuess(option, guess, fixes, pics)]
         
         print "Checked %d tuples" %nIter
         nOptions = len(self.options)
@@ -79,8 +62,6 @@ class NumberAnalyzer:
 digits = input('How many digits? > ')
 analyzer = NumberAnalyzer(digits)
 guess = input('Next guess? > ')
- 
-#print analyzer.matchesGuess((0,1,3), (3,4,2), 3, 0)
  
 
 while isinstance( guess, ( int, long ) ):
