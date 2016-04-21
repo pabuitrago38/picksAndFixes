@@ -80,5 +80,18 @@ if __name__ == '__main__':
                 guess = input('Next guess? > ')
                 
     else:
-        print 'See you later!'
+        nDigits = input('How many digits? > ')
+        print "Let's have the system play with two digits!"
+        
+        digits = range(0,10)
+        numbers = list(itertools.permutations(digits,nDigits))
+        
+        for number in numbers:
+                numberS = ""
+                for idx in range(nDigits):
+                        numberS += str(number[idx])
+                print "We are guessing the following number: " +  numberS
+                
+                
+            
         sys.exit()
